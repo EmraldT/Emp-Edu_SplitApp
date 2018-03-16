@@ -1,0 +1,98 @@
+<mvc:View
+	controllerName="employee.detail.Employee.controller.AddMaster"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:smartfield="sap.ui.comp.smartfield"
+	xmlns:smartform="sap.ui.comp.smartform">
+	<semantic:DetailPage
+		id="addPage"
+		navButtonPress="onNavBack"
+		showNavButton="true"
+		title="{i18n>detailTitle}"
+		busy="{addMasterView>/busy}"
+		busyIndicatorDelay="{addMasterView>/delay}">
+		<semantic:content>
+			<smartform:SmartForm
+				id="form"
+				editable="true"
+				title="{i18n>formTitle}"
+				class="sapUiResponsiveMargin">
+				<smartform:Group
+					id="formGroup"
+					label="{i18n>formGroupLabel}">
+					<smartform:GroupElement>
+						<smartfield:SmartField
+							id="ID"
+							textLabel="Employee ID"
+							value="{ID}"
+							enabled="false"/>
+					</smartform:GroupElement>
+					<smartform:GroupElement>
+						<smartfield:SmartField
+							id="FNAME"
+							textLabel="First Name"
+							value="{
+								path : 'FNAME',
+								type : 'sap.ui.model.type.String',
+								constraints: {minLength: 2}
+							}"
+							mandatory="true"/>
+					</smartform:GroupElement>
+					<smartform:GroupElement>
+						<smartfield:SmartField
+							id="LNAME"
+							textLabel="Last Name"
+							value="{
+								path : 'LNAME',
+								type : 'sap.ui.model.type.String',
+								constraints: {minLength: 2}
+							}"
+							mandatory="true"/>
+					</smartform:GroupElement>
+					<smartform:GroupElement>
+						<smartfield:SmartField
+							id="AGE"
+							textLabel="Age"
+							value="{AGE}"/>
+					</smartform:GroupElement>
+					<smartform:GroupElement>
+						<smartfield:SmartField
+							id="CITY"
+							textLabel="City"
+							value="{CITY}"/>
+					</smartform:GroupElement>
+					<smartform:GroupElement>
+						<smartfield:SmartField
+							id="DOJ"
+							textLabel="Date of Joining"
+							value="{DOJ}"/>
+					</smartform:GroupElement>
+					<smartform:GroupElement>
+						<smartfield:SmartField
+							id="SALARY"
+							textLabel="Salary"
+							value="{
+								path: 'SALARY',
+								type: 'sap.ui.model.type.Float',
+								formatOptions: {minFractionDigits : 2}
+							}"
+							mandatory="true"/>
+					</smartform:GroupElement>
+					<smartform:GroupElement>
+						<smartfield:SmartField
+							id="Currency"
+							textLabel="Currency"
+							value="{Currency}"/>
+					</smartform:GroupElement>
+				</smartform:Group>
+			</smartform:SmartForm>
+		</semantic:content>
+		<semantic:saveAction>
+			<semantic:SaveAction id="save" press="onSave"/>
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction id="cancel" press="onCancel"/>
+		</semantic:cancelAction>
+	</semantic:DetailPage>
+</mvc:View>

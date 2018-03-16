@@ -1,0 +1,57 @@
+<mvc:View
+	controllerName="employee.detail.Employee.controller.AddDetail"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:smartfield="sap.ui.comp.smartfield"
+	xmlns:smartform="sap.ui.comp.smartform">
+	<semantic:DetailPage
+		id="page"
+		title="Education Details"
+		showNavButton="true"
+		navButtonPress="onNavBack">
+		<semantic:content>
+			<smartform:SmartForm
+				id="form"
+				editable="true"
+				title="{i18n>formTitle}"
+				class="sapUiResponsiveMargin">
+				<smartform:Group
+					id="formGroup"
+					label="{i18n>formGroupLabel}">
+					<smartform:GroupElement>
+						<smartfield:SmartField
+							id="EDUCATION"
+							textLabel="Education Type"
+							value="{EDUCATION}"
+							mandatory="true">
+						</smartfield:SmartField>
+					</smartform:GroupElement>
+					<smartform:GroupElement>
+						<smartfield:SmartField
+							id="CLG"
+							textLabel="Institute"
+							value="{
+								path : 'CLG',
+								type : 'sap.ui.model.type.String',
+								constraints: {maxLength: 50}
+							}"
+							mandatory="true"/>
+					</smartform:GroupElement>
+					<smartform:GroupElement>
+						<smartfield:SmartField
+							id="YOP"
+							textLabel="Year of Passing"
+							value="{YOP}"/>
+					</smartform:GroupElement>
+				</smartform:Group>
+			</smartform:SmartForm>
+		</semantic:content>
+		<semantic:saveAction>
+			<semantic:SaveAction id="save" press="onSave"/>
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction id="cancel" press="onCancel"/>
+		</semantic:cancelAction>
+	</semantic:DetailPage>
+</mvc:View>

@@ -1,0 +1,46 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+    <edmx:DataServices
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+        <Schema
+            xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+            xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="USER04.SAPUI_EMP.odata_gen">
+            <EntityType Name="masterType">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="15"/>
+                <Property Name="FNAME" Type="Edm.String" MaxLength="15"/>
+                <Property Name="LNAME" Type="Edm.String" MaxLength="15"/>
+                <Property Name="AGE" Type="Edm.Int32"/>
+                <Property Name="DOJ" Type="Edm.String" MaxLength="10"/>
+                <Property Name="CITY" Type="Edm.String" MaxLength="20"/>
+                <Property Name="SALARY" Type="Edm.Int32"/>
+                <NavigationProperty Name="master2" Relationship="USER04.SAPUI_EMP.odata_gen.master1Type" FromRole="masterPrincipal" ToRole="translationDependent"/>
+            </EntityType>
+            <EntityType Name="translationType">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="EDUCATION"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="15"/>
+                <Property Name="EDUCATION" Type="Edm.String" Nullable="false" MaxLength="15"/>
+                <Property Name="CLG" Type="Edm.String" MaxLength="15"/>
+                <Property Name="YOP" Type="Edm.String" MaxLength="10"/>
+            </EntityType>
+            <Association Name="master1Type">
+                <End Type="USER04.SAPUI_EMP.odata_gen.masterType" Role="masterPrincipal" Multiplicity="1"/>
+                <End Type="USER04.SAPUI_EMP.odata_gen.translationType" Role="translationDependent" Multiplicity="*"/>
+            </Association>
+            <EntityContainer Name="odata_gen" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="master" EntityType="USER04.SAPUI_EMP.odata_gen.masterType"/>
+                <EntitySet Name="translation" EntityType="USER04.SAPUI_EMP.odata_gen.translationType"/>
+                <AssociationSet Name="master1" Association="USER04.SAPUI_EMP.odata_gen.master1Type">
+                    <End Role="masterPrincipal" EntitySet="master"/>
+                    <End Role="translationDependent" EntitySet="translation"/>
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
